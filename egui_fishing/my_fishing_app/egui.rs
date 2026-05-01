@@ -1,6 +1,6 @@
 use eframe::egui;
 
-fn main() -> Result<(), eframe::Error> {
+fn main() -> eframe::Result {
     let options = eframe::NativeOptions::default();
     eframe::run_native(
         "釣果報告アプリ",
@@ -16,11 +16,9 @@ struct Report {
 }
 
 struct FishingApp {
-    // 入力用フィールド
     input_fish: String,
     input_size: String,
     input_place: String,
-    // 報告リスト
     reports: Vec<Report>,
 }
 
@@ -35,6 +33,7 @@ impl Default for FishingApp {
     }
 }
 
+// eframe::App トレイトの実装を最新の仕様に修正
 impl eframe::App for FishingApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
@@ -63,7 +62,6 @@ impl eframe::App for FishingApp {
                             size: self.input_size.clone(),
                             place: self.input_place.clone(),
                         });
-                        // 入力をリセット
                         self.input_fish.clear();
                         self.input_size.clear();
                         self.input_place.clear();
