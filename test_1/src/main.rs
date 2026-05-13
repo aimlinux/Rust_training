@@ -16,6 +16,7 @@ fn main() {
         println!("ループの回数: {}", count);
         if count == 5 {
             break;
+        }
     }
 
     // for文
@@ -32,4 +33,5 @@ fn main() {
         3 => println!("three"),
         _ => println!("other"),  // _はワイルドカード。どのパターンにもマッチしない場合に実行される。
     }
+
 }
